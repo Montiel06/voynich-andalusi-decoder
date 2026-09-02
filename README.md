@@ -14,7 +14,7 @@ Este repositorio contiene el código fuente y los datasets utilizados para audit
 ## Resultados Clave
 El modelo de transición muestra una clara direccionalidad operacional y una fuerte convergencia hacia estados de terminación técnica:
 
-![Matriz de Transición de Markov](figures/markov_transitions.png)
+![Matriz de Transición de Markov](Matriz%20de%20transicion%20de%20Markov.png)
 
 ## Reproducibilidad
 Para ejecutar los análisis sin dependencias locales, abre el cuaderno en Colab haciendo clic en el botón superior o sigue estos pasos localmente:
