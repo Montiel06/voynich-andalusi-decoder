@@ -19,7 +19,7 @@ El modelo de transición muestra una clara direccionalidad operacional y una fue
 ## Reproducibilidad
 Para ejecutar los análisis sin dependencias locales, abre el cuaderno en Colab haciendo clic en el botón superior o sigue estos pasos localmente:
 ```bash
-git clone [https://github.com/tu-usuario/voynich-andalusi-pipeline.git](https://github.com/tu-usuario/voynich-andalusi-pipeline.git)
+git clone https://github.com/Montiel06/voynich-andalusi-decoder.git
 cd voynich-andalusi-pipeline
 pip install -r requirements.txt
 python -m notebook notebook/voynich_pipeline.ipynb
