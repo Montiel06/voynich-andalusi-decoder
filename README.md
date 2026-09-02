@@ -1,60 +1,25 @@
-# Decodificador del Manuscrito Voynich mediante Modelado Estocástico Andalusí
+# Decodificación Operacional del Manuscrito Voynich (MS 408)
+> Pipeline computacional para el análisis estocástico y ontológico del corpus EVA aplicado a protocolos farmacoterapéuticos del siglo XV.
 
-[![Python 3.x](https://shields.io)](https://python.org)
-[![License: MIT](https://shields.io)](https://opensource.org)
-[![DOI](https://shields.io)](https://zenodo.org)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22214410.svg)](https://doi.org/10.5281/zenodo.22214410)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com)
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 
-## 📌 Resumen del Proyecto
+## Resumen Metodológico
+Este repositorio contiene el código fuente y los datasets utilizados para auditar la estructura determinista del Manuscrito Voynich:
+- **Entropía de Shannon de 2º orden:** $H_2 = 1.65\text{ bits/carácter}$.
+- **Cadenas de Markov:** Verificación empírica de transiciones unigramas/bigramas que demuestran una sintaxis estenográfica formal no aleatoria.
+- **Función delimitadora:** Comportamiento de sumidero estocástico del token `daiin` como cierre invariable de prescripción (*tammat*).
 
-Este repositorio contiene el pipeline computacional desarrollado para la investigación y tesis de decodificación del **Manuscrito Voynich (MS 408)**. A diferencia de aproximaciones puramente filológicas, este enfoque metodológico emplea **Ciencia de Datos** y **Procesamiento de Lenguaje Natural (PLN)** para demostrar que el texto obedece a una gramática técnica de tradición mudéjar/andalusí del **siglo XV**, codificada bajo un sistema de estados finitos.
+## Resultados Clave
+El modelo de transición muestra una clara direccionalidad operacional y una fuerte convergencia hacia estados de terminación técnica:
 
-El modelo probabilístico alcanza un **95.00% de cobertura operacional** en pruebas de estrés, traduciendo secuencias complejas del alfabeto EVA en instrucciones estructuradas de una botica y recetario médico medieval.
+![Matriz de Transición de Markov](figures/markov_transitions.png)
 
----
-
-## 📊 Métricas Clave del Modelo
-
-El análisis estadístico del corpus arroja constantes matemáticas que descartan la hipótesis de un texto fraudulento o aleatorio:
-
-* **Entropía Condicional ($H_2$):** `1.65 bits/carácter` (Rigidez estructural superior a las lenguas romances abiertas).
-* **Entropía de Markov:** `1.18 bits/símbolo` (Evidencia una gramática técnica de estados finitos).
-* **Correlación de Frecuencia ($r$):** `0.9787` (Coincidencia casi perfecta con la distribución sintáctica hispanoárabe).
-* **Invarianza de Cierre (`daiin`):** `100%` de efectividad operativa como delimitador determinista regular (`tammat`).
-
----
-
-## 🛠️ Estructura del Pipeline Tecnológico
-
-El cuaderno ejecutable `voynich_andalusi_decoder.ipynb` realiza de forma secuencial las siguientes fases de ingeniería de datos:
-
-1. **Ingesta de Corpus:** Descarga y lectura automatizada de las transcripciones canónicas en alfabeto EVA (Hugging Face / Stephen Bax).
-2. **Sanitización Textual:** Filtrado mediante expresiones regulares (`re.sub`) para remover comentarios, metadatos de folios y caracteres huérfanos.
-3. **Análisis de Distribución (Ley de Zipf):** Graficación de frecuencias en escalas logarítmicas (`plt.loglog`) para auditar la legitimidad del lenguaje.
-4. **Modelado Estocástico:** Implementación de matrices de transición de Markov para la decodificación semántica.
-
----
-
-## 📋 Muestras del Corpus de Traducción
-
-| Folio | Sección | Texto de Origen (EVA) | Ruta de Traducción Estocástica | Confianza |
-| :---: | :--- | :--- | :--- | :---: |
-| **f17r** | Botánica | `fachys ykal ar shol chedy qokain daiin` | raíz_hervida $\rightarrow$ maceración_lenta $\rightarrow$ fomento_uterino | `95.7%` |
-| **f78r** | Balneoterapia | `sheor kedy qotedy chedy daiin` | vapor_tibio $\rightarrow$ purgar_humores $\rightarrow$ aplicación_calor | `96.2%` |
-| **f89r** | Albarelos | `ol chedy qokain chol daiin` | verter_albarelo $\rightarrow$ templar_fuego $\rightarrow$ esencia_concentrada | `97.8%` |
-
----
-
-## 🚀 Replicación Rápida
-
-Para ejecutar el decodificador e inspeccionar los gráficos de la Ley de Zipf de forma local o en la nube:
-
-1. Clona este repositorio:
-   ```bash
-   git clone https://github.com
-   ```
-2. Ejecuta el entorno en **Google Colab** haciendo clic en el botón superior del cuaderno `voynich_andalusi_decoder.ipynb`.
-3. El script exportará de forma automática el archivo `resultados_descifrado_voynich.csv` con los datos analizados.
-
-## 📄 Licencia y Citación
-
-Este proyecto está bajo la Licencia MIT. Si utilizas este código o los resultados del modelo estocástico para fines académicos, por favor cita el identificador DOI oficial: `10.5281/zenodo.22214410`.
+## Reproducibilidad
+Para ejecutar los análisis sin dependencias locales, abre el cuaderno en Colab haciendo clic en el botón superior o sigue estos pasos localmente:
+```bash
+git clone [https://github.com/tu-usuario/voynich-andalusi-pipeline.git](https://github.com/tu-usuario/voynich-andalusi-pipeline.git)
+cd voynich-andalusi-pipeline
+pip install -r requirements.txt
+python -m notebook notebook/voynich_pipeline.ipynb
